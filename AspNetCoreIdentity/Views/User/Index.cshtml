@@ -1,0 +1,30 @@
+﻿@model List<AppUser>
+@{ 
+    Layout = "_Layout";
+}
+<a asp-action="Create" asp-controller="User">Add New user</a>
+<table class="table table-bordered table-hovered table-sm">
+   <thead>
+       <tr>
+           <th>Username</th>
+           <th>Gender</th>
+           <th>Email</th>
+           <th>Role Info</th>
+       </tr>
+   </thead>  
+   <tbody>
+       @foreach (var user in Model)
+       {
+       <tr>
+           <td>@user.UserName</td>
+           <td>@user.Gender</td>
+           <td>@user.Email</td>
+           <td><getuserinfo user-id="user.Id"></getuserinfo></td>
+           <td>
+               <a asp-action="AssignRole" asp-route-id="@user.Id">Assign Role</a>
+           </td>
+       </tr>
+       }
+       
+   </tbody> 
+</table>
